@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(245, 205, 229);
+            text-align: center;
+            padding: 10px;
+        }
+        /* Grid Layout*/
+        #content{
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(50px, auto);
+            gap: 10px;
+            margin: 0 auto;
+            grid-template-areas: 
+            "header header header"
+            "blog blog blog"
+            ". . ."
+            "nav main main"
+            ". main main"
+            "aside main main"
+            ". main main"
+            "section main main"
+            ". . ."
+            "footer footer footer"
+            ;
+        }
+
+        header{
+            grid-area: header;
+            display: flex;
+            position: relative;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        #nav ul{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #nav li{
+            display: inline-block;
+            list-style: none;
+            padding: 10px;
+        }
+
+        #nav li a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #nav li a:hover{
+            text-decoration: underline;
+        }
+
+        main{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: minmax(30px, 470px);
+            grid-area: main;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .one,
+        .two,
+        .three,
+        .four,
+        .five,
+        .six{
+            background-color: #fff;
+        }
+
+        .one img,
+        .two img,
+        .three img,
+        .four img,
+        .five img,
+        .six img{
+            width: 100%;
+            height: 60%;
+            object-fit: fill;
+        }
+
+        #main-content{
+            padding: 20px;
+        }
+
+        main p{
+            color: gray;
+        }
+
+        button{
+            padding: 3px;
+        }
+
+        nav{
+            grid-area: nav;
+        }
+
+        #search{
+            padding: 15px;
+            border-radius: 20px;
+            border: none;
+            width: 100%;
+        }
+
+        #nav-content{
+            background-color: #fff;
+            border-radius: 10px;
+            line-height: 50px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        #nav-content li{
+            list-style: none;
+        }
+
+        #nav-content li a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #nav-content li a:hover{
+            text-decoration: underline;
+        }
+
+        aside{
+            grid-area: aside;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        aside div{
+            display: flex;
+            gap: 10px;
+        }
+
+        section{
+            grid-area: section;
+            text-align: left;
+            background-color: #fff;
+            padding: 20PX;
+            border-radius: 10px;
+        }
+
+        section div{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        section div img{
+            width: 130px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        #blog{
+            padding: 10px;
+            grid-area: blog;
+            position: relative;
+            left: -10px;
+            right: -10px;
+            display: flex;
+            background-color: white;
+            width: 100%;
+            height: 50px;
+        }
+
+        #blog h1{
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        #blog p{
+            position: absolute;
+            top: 25px;
+            right: 28px;
+            color: gray;
+        }
+
+        footer{
+            grid-area: footer;
+            position: relative;
+            left: -10px;
+            display: flex;
+            gap: 10%;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p{
+            line-height: 30px;
+        }
+
+        footer a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            text-decoration: underline;
+        }
+
+        footer img{
+            width: 20px;
+            height: 20px;
+        }
+
+        #brand p{
+            white-space: nowrap;
+            color: gray;
+        }
+
+        /* Mobile responsiveness*/
+
+        @media (max-width:500px) {
+            #content{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(30px, auto);
+                gap: 10px;
+                margin: 0 auto;
+                grid-template-areas: 
+                "header"
+                "blog"
+                "."
+                "nav"
+                "."
+                "main"
+                "."
+                "aside"
+                "section"
+                "footer"
+                ;
+            }
+
+            main{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(0, 620px);
+                grid-area: main;
+                gap: 10px;
+                text-align: left;
+                
+            }
+            
+            h1{
+                font-size: 20px;
+            }
+            
+            h3{
+                font-size: 15px;
+            }
+            
+            h4{
+                font-size: 15px;
+            }
+            
+            #nav li{
+                padding: 2px;
+            }
+            
+            #nav ul{
+                right: 0;
+            }
+            
+            #blog{
+                left: -8px;
+                height: none;
+                padding: 3px;
+                width: 103%;
+            }
+            
+            #blog p{
+                right: 0;
+                top: 15px;
+            }
+            
+            section div img{
+                width: 80px;
+                height: 80px;
+            }
+
+            footer{
+                display: inline-block;
+                gap: 5%;
+                width: 94%;
+            }
+
+            #brand p{
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <header>
+            <h1>Tech</h1>
+
+            <div id="nav">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Pages</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="blog">
+            <h1>Blog</h1>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+
+        <main>
+            <div class="card one">
+                <img src="photo/DSC_0456.jpg" alt="">
+                <div id="main-content">
+                    <p>Thursday 5/5/2022 at 2:00pm</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+
+            <div class="card two">
+                <img src="photo/FB_IMG_16145013404714305.jpg" alt="">
+                <div id="main-content">
+                    <p>Sunday 7/5/2022 at 2:30pm</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+
+            <div class="card three">
+                <img src="photo/FB_IMG_16151065514114388.jpg" alt="">
+                <div id="main-content">
+                    <p>Thursday 5/5/2022 at 1:00pm</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+
+            <div class="card four">
+                <img src="photo/FB_IMG_16151065344129667.jpg" alt="">
+                <div id="main-content">
+                    <p>Tuesday 10/5/2022 at 8:00am</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+
+            <div class="card five">
+                <img src="photo/FB_IMG_16210321348265868.jpg" alt="">
+                <div id="main-content">
+                    <p>Wednesday 4/5/2022 at 2:00pm</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+
+            <div class="card six">
+                <img src="photo/FB_IMG_16357937119637304.jpg" alt="">
+                <div id="main-content">
+                    <p>Thursday 5/5/2022 at 2:00pm</p>
+
+                    <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, animi!</h4>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias iure cum voluptatibus modi doloribus!</p>
+                    <br><button type="submit">See more</button>
+                </div>
+            </div>
+        </main>
+
+        <nav>
+            <input type="search" name="search" id="search" placeholder="Search Here">
+            <br><br><br>
+            <div id="nav-content">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Creativity</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Food</a></li>
+                    <li><a href="#">Travel</a></li>
+                    <li><a href="#">Sport</a></li>
+                    <li><a href="#">Music</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <aside>
+            <h3>Top Posts</h3>
+            <br>
+            <div>
+                <h1>1</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis asperiores rem qui at blanditiis quo.</p>
+            </div>
+            <br>
+            <div>
+                <h1>2</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis asperiores rem qui at blanditiis quo.</p>
+            </div>
+            <br>
+            <div>
+                <h1>3</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis asperiores rem qui at blanditiis quo.</p>
+            </div>
+            <br>
+            <div>
+                <h1>4</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis asperiores rem qui at blanditiis quo.</p>
+            </div>
+            <br>
+            <div>
+                <h1>5</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis asperiores rem qui at blanditiis quo.</p>
+            </div>
+        </aside>
+
+        <section>
+            <h3>Instagram</h3>
+            <br>
+            <div>
+                <img src="photo/400046300114_207801.jpg" alt="hi">
+                <img src="photo/400096800548_88232.jpg" alt="hello">
+                <img src="photo/400097300234_87774.jpg" alt="hii">
+                <img src="photo/875fbad5239e408ea0a89b616062a0c8.jpg" alt="helloo">
+                <img src="photo/IMG_20210216_223416_584.jpg" alt="so">
+                <img src="photo/IMG_20210216_224328_897.jpg" alt="ok">
+            </div>
+        </section>
+
+        <footer>
+            <div id="brand">
+                <h3>Tech.</h3>
+                <br><br>
+                <p>&copy; 2022 All Right Reserved</p>
+            </div>
+
+            <div id="about">
+                <h3>About Us</h3>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non veritatis ea tenetur ad adipisci quaerat.</p>
+            </div>
+
+            <div id="product">
+                <h3>Product</h3>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit et dolore ipsum est ratione velit.</p>
+            </div>
+
+            <div id="contact">
+                <h3>Contact Us</h3>
+                <br>
+                <a href="mailto:example@gmail.com">example@gmail.com</a>
+                <br><br>
+                <a href="tel:+2341234567">+2341234567</a>
+                <br><br>
+                <a href="http://api.whatsapp.com/send?phone=2349064859298">
+                    <img src="photo/WhatsApp.png" alt="">
+                </a>
+                <a href="twitter.com">
+                    <img src="photo/twitter.png" alt="">
+                </a>
+                <a href="facebook.com">
+                    <img src="photo/facebook.png" alt="">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
